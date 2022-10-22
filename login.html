@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="/lib/js/angular.min.js"></script>
+ 
+</head>
+<body>
+    <div class="col-sm-5 mx-auto">
+        <div
+            class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+            <div class="card-img-left-login d-none d-md-flex">
+                <!-- Background image for card set in CSS! -->
+            </div>
+            <div class="card-body p-4 p-sm-5 ">
+                <img class="mb-4 mx-auto d-block img-fluid"
+                    src="/lib/image/logo.png" alt="logo">
+                <h5 class="card-title text-center mb-5 fw-light fs-5">Đăng Nhập</h5>
+                <form name="formLogin">
+    
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control"
+                            id="email" name="email" value="" ng-model="email" ng-pattern="/^\S+@\S+\.\S+$/" ng-required=true
+                            placeholder="name@example.com"> <label
+                            for="floatingInputEmail">Email address</label>
+                            <span class="error text-danger" ng-show="formLogin.email.$error.required">Email không được để trống!</span>
+                            <span class="error text-danger" ng-show="!formLogin.email.$error.required&&formLogin.email.$error.pattern">Email phải đúng định dạng!</span>
+                    </div>
+    
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control " ng-model="password"  ng-required=true
+                            id="password" name="password" placeholder="Password"> <label
+                            for="floatingPassword">Password</label>
+                            <span class="error text-danger" ng-show="formLogin.password.$error.required">Password không được để trống!</span>
+                    </div>
+                    <div class="form-check">
+                        <input name="remember" type="checkbox" ng-model="remember"
+                            class="form-check-input bg-secondary" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check
+                            me out</label>
+                    </div>
+    
+                    <div class="d-grid mb-2">
+                        <button
+                            class="btn btn-lg btn-outline-primary btn-login fw-bold text-uppercase" ng-click="login()" 
+                            ng-disabled="formLogin.$invalid" type="submit">Đăng Nhập</button>
+                    </div>
+    
+                    <a class="d-block text-center mt-2 small" href="#!/Register">Chưa có tài khoản <b>Đăng Ký</b></a>
+    
+                    <hr class="my-4">
+    
+                    <div class="d-grid mb-2">
+                        <button
+                            class="btn btn-outline-danger btn-lg btn-google btn-login fw-bold text-uppercase"
+                            type="submit">
+                            <i class="fab fa-google me-2"></i> Sign up with Google
+                        </button>
+                    </div>
+    
+                    <div class="d-grid">
+                        <button
+                            class="btn btn-outline-primary btn-lg btn-facebook btn-login fw-bold text-uppercase"
+                            type="submit">
+                            <i class="fab fa-facebook-f me-2"></i> Sign up with Facebook
+                        </button>
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <script>
+        angular.module('my-app', []).controller('my-controller',function($scope, $http){
+            $http({
+                    type:"GET",
+                    headers: {
+                        "Accept": "application/json;charset=utf-8",
+                        "Accept-Charset":"charset=utf-8"
+                    },
+                    dataType:"json",
+                    url:"/lib/data/listsv.js",
+                }).then(function success(response){
+                // $scope.products =response.data;
+                $scope.login = function(){
+                var email = $scope.email
+                var password = $scope.password
+                var remember = $scope.remember
+                var signin = false;
+                var motsv;
+                for (let i = 0; i < response.data.length; i++) {
+                    motsv = response.data[i];
+                    if (email == motsv.email && password == motsv.password) {
+                        signin = true
+                        break
+                    }
+                }
+                if (signin) {
+                    if (remember) {
+                        sessionStorage.setItem("username", motsv.username)
+                        sessionStorage.setItem("fullname", motsv.fullname)
+                        sessionStorage.setItem("email", motsv.email)
+                        document.location="index.html"
+                    }
+                } else {
+                    alert("Login fail")
+                }
+                }
+            });
+            
+        });
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>

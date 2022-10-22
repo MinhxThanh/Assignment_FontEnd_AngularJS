@@ -1,0 +1,66 @@
+<nav ng-show="displayPagination == 1" class="navbar navbar-expand-lg bg-light my-2 rounded-2 shadow-sm p-3 bg-body rounded">
+
+<div class="container-fluid">
+  <!-- <a class="navbar-brand fw-semibold fs-6" href="#">DEVELOPMENT</a> -->
+  <!-- <i class="fas fa-3x fa-angle-right ml-2" style="font-weight: 700;"></i> -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="menu-collapse collapse navbar-collapse" id="navbarSupportedContent">
+    <ol class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#AllProducts">Tất cả</a>
+      </li>
+      <li class="nav-item" ng-repeat="p in products | limitTo: 3:0">
+        <a class="nav-link" aria-current="page" href="#!/example/{{p.Id}}/{{p.Name}}">{{p.Name}}</a>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Thêm 
+        </a>
+        
+        <ol class="dropdown-menu border-0" aria-labelledby="navbarDropdown" style="background: #f0f8ff00">
+          <li ng-repeat="p in products | limitTo: 5:4" style="width: 400px;"><a class="dropdown-item" href="#!/example/{{p.Id}}/{{p.Name}}">{{p.Name}}</a></li>
+          <li style="width: 400px;"><a class="dropdown-item" href="#abc">Môn Khác</a></li>
+        </ol>
+         <!-- <ol class="dropdown-menu11" ng-show="show">
+          <li ng-repeat="p in products | limitTo: 4:8"><a class="dropdown-item" href="#!/example/{{p.Id}}/{{p.Name}}">{{p.Name}}</a></li>
+        </ol>  -->
+      </li>
+    </ol>
+    <div class="d-flex col-sm-4">
+      <input ng-model="searchText" min="2" class="form-control me-2 rounded-5" type="search" placeholder="Search" aria-label="Search" style="max-width: 350px;">
+    </div>
+  </div>
+</div>
+</nav>
+
+<div class="col-sm-4 mx-sm-auto text-center m-3 my-2" ng-repeat="p in products | limitTo: pageSize:start | filter:searchText">
+
+  <div class="rounded-circle shadow" id="card-hover" >
+    <a href="#!/example/{{p.Id}}/{{p.Name}}">
+      <img src="/lib/image/logos/{{p.Logo}}" class="card-img-top rounded-circle" alt="...">
+    </a>
+  </div>
+  <div class="card-body mt-2">
+  <div class="mb-1">
+    <span class="fa fa-star checked" style="color: orange;"></span>
+    <span class="fa fa-star checked" style="color: orange;"></span>
+    <span class="fa fa-star checked" style="color: orange;"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+  </div>
+    <h5 class="card-title my-2" style="font-size: 1.3vw; font-weight: 700;">{{p.Name}}</h5>
+    <a href="#!/example/{{p.Id}}/{{p.Name}}" ng-click="display()" class="btn btn-outline-primary px-5 shadow">Bất đầu Test</a>
+  </div>
+</div>
+<div class="page-nav mt-5" >
+  <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+      <li ng-hide="start == 0" ng-click="previousPage()" class="page-item"><a class="page-link">Trước</a></li>
+      <li class="page-item"><button ng-click="nextPage()" class="page-link">Sau</button></li>
+      </ul>
+  </nav>
+</div>
+<!-- ng-click="startTo($index)" -->

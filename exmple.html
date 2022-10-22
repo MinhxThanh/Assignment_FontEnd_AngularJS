@@ -1,0 +1,148 @@
+ <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/lib/fontawesome-free-5.14.0-web/css/all.css">
+    <script src="/lib/js/angular.min.js"></script>
+    <style>
+      
+      h6 input[type=radio] {
+        appearance: none;
+        background-color: #fff;
+        width: 15px;
+        height: 15px;
+        border: 2px solid #ccc;
+        border-radius: 2px;
+        display: inline-grid;
+        place-content: center; 
+      }
+
+      h6 input[type=radio]::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        transform: scale(0);
+        transform-origin: bottom left;
+        background-color: #fff;
+        clip-path: polygon(13% 50%, 34% 66%, 81% 2%, 100% 18%, 39% 100%, 0 71%);
+    }
+
+    h6 input[type=radio]:checked::before {
+        transform: scale(1);
+    }
+    h6 input[type=radio]:checked{
+        background-color:   #0075FF;
+        border: 2px solid #0075FF;
+    }
+    </style> 
+  </head>
+  <body>
+   
+      <div class="body mt-3 d-flex justify-content-between" id="my-data">
+            <div class="col-sm-8 border rounded-2 p-3">
+              <div class="d-flex justify-content-between p-2">
+                <h3>- Bài Test môn {{namefromquiz}}</h3>
+                <img src="/lib/image/logos/{{quizname}}.jpg" width="5%" alt="logo" class="img-thumbnail">
+              </div>
+                <div class="d-flex justify-content-between p-3 bg-light rounded">
+                    <h6>Chọn số câu: 
+                    
+                    <input type="radio" name="fruit" id="flexRadioDefault1" ng-click="clickTotalQuiz()" ng-model="totalQuiz" value="60" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">50
+                    </label>
+                    <label>
+                        <input type="radio" name="fruit" ng-click="clickTotalQuiz()" ng-model="totalQuiz" value="50"> 40
+                    </label>
+                    <label>
+                        <input type="radio" name="fruit" ng-click="clickTotalQuiz()" ng-model="totalQuiz" value="32"> 30
+                    </label>
+                    <label>
+                        <input type="radio" name="fruit" ng-click="clickTotalQuiz()" ng-model="totalQuiz" value="20"> 20
+                    </label>
+                    </h6>
+                    <h6 ng-hide="timeTest == null"><i class="fas fa-hourglass-start"></i> {{timeTest}} Phút</h6>
+                </div>
+                <table class="table">
+                    <tbody>
+                        <tr >
+                            <td class="row" ng-repeat="q in quizs | limitTo: 5:0">
+                                <p>
+                                    <b>Câu: {{$index + 1}}</b>
+                                    
+                                </p>
+                                <div>{{q.Text}}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span style="margin-left: 10px">...</span>
+            </div>
+            <div class="col-sm-4 text-center pt-5">
+                <span class="text-danger">Bạn có muốn bất đầu?</span>
+                <a href="#!/quiz/{{quizname}}/{{namefromquiz}}/{{totalQuiz}}/{{timeTest}}" class="btn btn-outline-primary btn-lg w-75 mb-3">Bắt đầu kiểm tra</a>
+                <a href="/index.html" class="btn btn-outline-danger btn-lg w-75">Trở lại trang chủ</a>
+            </div>
+        </div>        
+      </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html> 
+<!-- Search
+| filter:searchText
+// myApp.filter('filter', [function() {
+  //     return function(values, config) { 
+  //       if (config.enabled) {
+  //         var filterResult = [];
+  //         angular.forEach(values, function(value) {
+  //           if (value.Name.includes(config.name)) {
+  //             filterResult.push(value);
+  //           };
+  //         });
+  //         return filterResult;
+  //       }
+  //       return values;
+  //     }
+  // }]); -->
+
+<!-- <div class="col-sm-3 card m-1 shadow p-3 bg-body rounded" id="card-hover" ng-repeat="p in products">
+  <img src="/lib/image/logos/{{p.Logo}}" class="card-img-top" alt="...">
+  <div class="card-body">
+   <div class="mb-1">
+    <span class="fa fa-star checked" style="color: orange;"></span>
+    <span class="fa fa-star checked" style="color: orange;"></span>
+    <span class="fa fa-star checked" style="color: orange;"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+   </div>
+    <h5 class="card-title">{{p.Name}}</h5>
+   <p class="card-text">Bài test này giúp bạn sử dụng ngôn ngữ lập trình Java và hướng dẫn bạn cách mở rộng trải nghiệm người...</p> 
+    <a href="#" class="btn btn-outline-primary">Start test</a>
+  </div>
+</div> -->
+
+<!-- let filterarray = [];
+                let galleryarray = response.data
+
+                document.getElementById('my-search').addEventListener('keyup', function(){
+                  let text = document.getElementById('my-search').value
+
+                  filterarray = galleryarray.filter(function(a){
+                    if (a.Name.includes(text)) {
+                      return a.Name
+                    }
+                  })
+                  if (text== '') {
+                    $scope.products =response.data;
+                  } else{
+                    if (filterarray == '') {
+                      document.getElementById('para').style.display = 'block'
+                    } else {
+                      $scope.products =response.data;
+                      document.getElementById('para').style.display = 'none'
+                    }
+                  }
+                }) -->

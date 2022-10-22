@@ -1,0 +1,67 @@
+<nav class="nav-menu fixed-top d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-3 border-bottom shadow-sm p-3 bg-body rounded-bottom" style="max-width: 91.7%; margin: auto;">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0">
+      <img src="/lib/image/logo.png" alt="logo" width="30%" class="img-fluid rounded-3">
+    </a>
+
+    <ol class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="#" class="nav-link px-2 link-secondary"><i class="fas fa-home"></i> Trang Chủ</a></li>
+      <li><a href="" onclick="window.open('/about.html','popup','width=1300,height=900'); return false;" class="nav-link px-2 link-dark"><i class="fas fa-info-circle"></i> Giới Thiệu</a></li>
+      <li><a href="" onclick="window.open('/contact.html','popup','width=1300,height=900'); return false;" class="nav-link px-2 link-dark"><i class="fas fa-link"></i> Liên Hệ</a></li>
+  
+    </ol>
+
+    <div class="col-md-3 text-end">
+      <div class="dropdown" ng-if="emailSession != null">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="far fa-user"></i> {{fullname}}
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item text-dark" href="#!/editprofile"><i class="fas fa-user-edit"></i> Chỉnh sửa tài khoản</a></li>
+          <li><a class="dropdown-item text-dark" href="#!/forgotpassword"><i class="fas fa-keyboard"></i> Quên mật khẩu</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a ng-click="logout()" class="dropdown-item text-dark" href="#!/Login"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
+        </ul>
+      </div>
+      
+      <div class="dropdown" ng-if="emailSession  == null">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="far fa-user"></i> Tài Khoản
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item text-dark" ng-click="display()" href="#!/Login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-dark" ng-click="display()" href="#!/Register"><i class="fas fa-user-edit"></i> Đăng Ký</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="carouselExampleIndicators" class="carousel slide" style="margin-top: 110px;" data-bs-ride="true">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/lib/image/banner4.jpg" class="d-block w-100 rounded" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/lib/image/banner2.jpg" class="d-block w-100 rounded" alt="...">
+      </div>
+      <div class="carousel-item">
+          <img src="/lib/image/banner3.jpg" class="d-block w-100 rounded" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="/lib/image/banner.png" class="d-block w-100 rounded" alt="...">
+    </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>

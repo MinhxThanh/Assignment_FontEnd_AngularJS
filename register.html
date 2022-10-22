@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="lib/js/angular.min.js"></script>
+</head>
+  <body>
+    <div class="col-sm-5 mx-auto">
+        <div
+            class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+            <div class="card-img-left-register d-none d-md-flex">
+                <!-- Background image for card set in CSS! -->
+            </div>
+            <div class="card-body p-4 p-sm-5 ">
+                <img class="mb-4 mx-auto d-block img-fluid"
+                    src="/lib/image/logo.png" alt="logo">
+                <h5 class="card-title text-center mb-5 fw-light fs-5">Đăng Ký</h5>
+                <form name="formRegister">
+    
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control "
+                            id="username" name="username" ng-model="username"  ng-model-options="{updateOn: 'blur'}"
+                            placeholder="myusername" required autofocus> <label
+                            for="floatingInputUsername">Tên tài khoản</label>
+                            <span class="error text-danger" ng-show="formRegister.username.$error.required">Tên tài khoản không được để trống!</span>
+
+                    </div>
+    
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control"
+                            id="email" name="email" value="" ng-model="email" ng-pattern="/^\S+@\S+\.\S+$/" ng-required=true
+                            placeholder="name@example.com"> <label
+                            for="floatingInputEmail">Email address</label>
+                            <span class="error text-danger" ng-show="formRegister.email.$error.required">Email không được để trống!</span>
+                            <span class="error text-danger" ng-show="!formRegister.email.$error.required&&formLogin.email.$error.pattern">Email phải đúng định dạng!</span>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control " ng-model="password"  ng-model-options="{updateOn: 'blur'}"
+                            id="password" name="password" placeholder="Password"> <label
+                            for="floatingPassword">Mật khẩu</label>
+                            <span class="error text-danger" ng-show="formRegister.password.$error.required">Mật khẩu không được để trống!</span>
+
+                    </div>
+    
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control " ng-model="confirmPassword"  ng-model-options="{updateOn: 'blur'}"
+                            id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+                        <label for="floatingPasswordConfirm">Xác nhập mật khẩu</label>
+                        <span class="error text-danger" ng-show="formRegister.confirmPassword.$error.required">Mật khẩu xác nhận không được để trống!</span>
+                        <!-- <span class="error text-danger" ng-if="confirmPassword = password">Mật khẩu xác nhận không giống!</span> -->
+                    </div>
+    
+                    <div class="d-grid mb-2">
+                        <button ng-disabled="password != confirmPassword" ng-click="register()"
+                            class="btn btn-lg btn-outline-primary btn-login fw-bold text-uppercase"
+                            ng-disabled="formRegister.$invalid" type="submit">Đăng Ký</button>
+                    </div>
+    
+                    <a class="d-block text-center mt-2 small" href="#">Have an
+                        account? Sign In</a>
+    
+                    <hr class="my-4">
+    
+                    <div class="d-grid mb-2">
+                        <button
+                            class="btn btn-outline-danger btn-lg btn-google btn-login fw-bold text-uppercase"
+                            type="submit">
+                            <i class="fab fa-google me-2"></i> Sign up with Google
+                        </button>
+                    </div>
+    
+                    <div class="d-grid">
+                        <button
+                            class="btn btn-outline-primary btn-lg btn-facebook btn-login fw-bold text-uppercase"
+                            type="submit">
+                            <i class="fab fa-facebook-f me-2"></i> Sign up with Facebook
+                        </button>
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <script>
+        myApp = angular.module('my-app', []);
+        myApp.controller('my-controller', function($scope) {
+            var register = false
+            $scope.index = -1
+            // if ((username != '') && (email != '') && (password != '') && (confirmPassword != '')) {
+            //     $scope.index = 1
+            // }
+            $scope.register = function(){
+                sessionStorage.setItem("username", $scope.username)
+                sessionStorage.setItem("fullname", $scope.username)
+                sessionStorage.setItem("password", $scope.password)
+                sessionStorage.setItem("email", $scope.email)
+                document.location="index.html"
+            }
+            
+        })
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>
+<!-- && (username = null) && (email = null) && (password = null) && (confirmPassword = null)" -->
+<!-- (password != confirmPassword) && email == '' -->
